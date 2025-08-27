@@ -1,0 +1,266 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    background-color: #0e0e0e;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* HEADER */
+.header {
+    background: #111;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #222;
+    animation: slideDown 1s ease forwards;
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00bcd4;
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* HERO SECTION */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.text-content h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+.text-content h1 span {
+    color: #00bcd4;
+}
+
+.typing {
+    font-size: 24px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-right: .15em solid #00bcd4;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 4s steps(40, end) forwards, blink .75s step-end infinite;
+}
+
+.typing span {
+    color: #00bcd4;
+    font-weight: bold;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+.text-content p {
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 500px;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    animation: fadeIn 1.8s ease forwards;
+}
+
+.social-icons a {
+    font-size: 20px;
+    color: #00bcd4;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #00bcd4;
+    color: #000;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    animation: fadeIn 2s ease forwards;
+}
+
+.btn:hover {
+    background-color: #0196a6;
+    animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* IMAGE */
+.image-content img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    animation: fadeInRight 1.8s ease forwards;
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .image-content img {
+        max-width: 300px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Animação da navbar - links surgem um a um */
+.navbar .nav-link {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: navFade 0.5s ease forwards;
+}
+
+/* Animação personalizada para os links */
+@keyframes navFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Atrasos progressivos para criar o efeito em cascata */
+.navbar .nav-link:nth-child(1) {
+    animation-delay: 0.3s;
+}
+.navbar .nav-link:nth-child(2) {
+    animation-delay: 0.5s;
+}
+.navbar .nav-link:nth-child(3) {
+    animation-delay: 0.7s;
+}
+.navbar .nav-link:nth-child(4) {
+    animation-delay: 0.9s;
+}
+.navbar .nav-link:nth-child(5) {
+    animation-delay: 1.1s;
+}
