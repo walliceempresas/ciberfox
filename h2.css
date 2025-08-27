@@ -1,0 +1,304 @@
+/* Paleta de Cores Neon / Glassmorphism - Versão AZUL */
+:root {
+    --cor-fundo-escuro: #1A1A2E; /* Azul escuro quase preto */
+    --cor-acento-azul-escuro: #004D99; /* Azul Profundo */
+    --cor-acento-ciano: #00E5FF; /* Ciano Neon */
+    --cor-texto-claro: #ECF0F1;
+    --cor-texto-escuro: #000;
+    --sombra-neon-azul: 0 0 15px var(--cor-acento-azul-escuro);
+    --sombra-neon-ciano: 0 0 15px var(--cor-acento-ciano);
+}
+
+/* Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #161A30, #0F0F23);
+    color: var(--cor-texto-claro);
+    line-height: 1.6;
+    transition: background-color 0.4s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header (Cabeçalho e Menu) */
+.header {
+    background-color: rgba(255, 255, 255, 0.05); /* Semi-transparente */
+    padding: 20px 0;
+    backdrop-filter: blur(10px); /* Efeito de vidro embaçado */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--cor-acento-ciano);
+    text-shadow: var(--sombra-neon-ciano);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.logo:hover {
+    transform: scale(1.05);
+    color: #FFF;
+    text-shadow: 0 0 20px var(--cor-acento-ciano);
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li {
+    margin-left: 30px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--cor-texto-claro);
+    font-weight: 600;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.nav-menu a:hover {
+    color: var(--cor-acento-ciano);
+    text-shadow: var(--sombra-neon-ciano);
+}
+
+.cart-icon {
+    font-size: 1.7em;
+    color: var(--cor-texto-claro);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.cart-icon:hover {
+    color: var(--cor-acento-ciano);
+    transform: scale(1.2);
+}
+
+/* Hero Section (Banner Principal) */
+.hero {
+    height: 450px;
+    background: linear-gradient(135deg, var(--cor-acento-azul-escuro), var(--cor-acento-ciano));
+    color: var(--cor-texto-claro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 4em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--cor-acento-ciano);
+}
+
+.hero p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.hero .cta-button {
+    background-color: var(--cor-texto-claro);
+    color: var(--cor-texto-escuro);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hero .cta-button:hover {
+    background: var(--cor-acento-ciano);
+    color: var(--cor-texto-claro);
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px var(--cor-acento-ciano);
+}
+
+/* Seção de Produtos em Destaque */
+.featured-products {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.featured-products h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--cor-acento-azul-escuro);
+    text-shadow: var(--sombra-neon-azul);
+    font-weight: 700;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.05); /* Fundo semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(10px); /* O famoso efeito de vidro */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), var(--sombra-neon-ciano);
+}
+
+.product-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 25px;
+    text-align: left;
+}
+
+.product-info h3 {
+    font-size: 1.4em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--cor-texto-claro);
+}
+
+.product-info p.price {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--cor-acento-ciano);
+    text-shadow: var(--sombra-neon-ciano);
+    margin-bottom: 20px;
+}
+
+.add-to-cart {
+    background-color: var(--cor-acento-azul-escuro);
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-block;
+    box-shadow: var(--sombra-neon-azul);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: var(--cor-acento-ciano);
+    transform: scale(1.05);
+    box-shadow: var(--sombra-neon-ciano);
+}
+
+/* Rodapé */
+.footer {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: var(--cor-texto-claro);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 50px;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: var(--cor-texto-claro);
+    margin: 0 10px;
+    font-size: 1.7em;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--cor-acento-ciano);
+    text-shadow: var(--sombra-neon-ciano);
+}
+
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav a {
+    color: #DDD;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--cor-acento-ciano);
+    text-shadow: var(--sombra-neon-ciano);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Efeito de Brilho no Cursor */
+.cursor-glow {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 50%;
+    pointer-events: none; /* Garante que o brilho não bloqueie cliques */
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 50px 10px var(--cor-acento-ciano), 0 0 20px 5px var(--cor-acento-ciano) inset;
+    transition: transform 0.1s ease-out;
+    z-index: 9999;
+}
+
+
+/* Esconde o cursor padrão do navegador */
+body {
+    cursor: none;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberfox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="h2.css">
+</head>
+<body>
+
+    <div class="cursor-glow"></div>
+
+    <header class="header">
+        <div class="container header-content">
+            <a href="#" class="logo">Cyberfox</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index2.html">Serviços</a></li>
+                    <li><a href="#">Carrinho</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="cart-icon">🛒</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Eletronicos</h1>
+                <p>Alta qualidade para seu conforto</p>
+                <a href="#" class="cta-button">Mais Produtos</a>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <div class="container">
+                <h2>Mais comprados</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="MOUSE GAMERS.jpg" alt="Produto 1">
+                        <div class="product-info">
+                            <h3>Mouse Gamer</h3>
+                            <p class="price">R$ 199.00</p>
+                            <a href="#" class="add-to-cart">Ver Produto</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="celular.png" alt="Produto 2">
+                        <div class="product-info">
+                            <h3>Celular</h3>
+                            <p class="price">R$ 1299.00</p>
+                            <a href="#" class="add-to-cart">Ver Produto</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="combo.png" alt="Produto 3">
+                        <div class="product-info">
+                            <h3>Combo</h3>
+                            <p class="price">R$1799.00 </p>
+                            <a href="#" class="add-to-cart">Ver Produto</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="tablet.png" alt="Produto 4">
+                        <div class="product-info">
+                            <h3>Tablet</h3>
+                            <p class="price">R$ 1999.00</p>
+                            <a href="#" class="add-to-cart">Ver Produto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 Cyberfox. Todos os direitos reservados.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Fale Conosco</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        const cursorGlow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+    </script>
+
+</body>
+</html>
