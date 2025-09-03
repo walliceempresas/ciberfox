@@ -5,153 +5,232 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carrinho de Compras - CyberFox</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #1d78cc;
-      color: #fff;
-    }
+    /* ===== Base ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1d78cc;
+  color: #fff;
+}
 
-    header {
-      background-color: #252526;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+header {
+  background-color: #252526;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    header h1 {
-      color: #4FC3F7;
-      margin: 0;
-    }
+header h1 {
+  color: #4FC3F7;
+  margin: 0;
+}
 
-    header button {
-      background-color: #007acc;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
+header button {
+  background-color: #007acc;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+header button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
+/* ===== Produtos ===== */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
 
-    .card {
-      background-color: #3d3d7d;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-      text-align: center;
-      padding: 15px;
-    }
+.card {
+  background-color: #3d3d7d;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 194, 255, 0.6);
+}
 
-    .card img {
-      max-width: 100%;
-      height: 200px;
-      object-fit: contain;
-      background: #1e1e1e;
-      border-radius: 8px;
-    }
+.card img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #1e1e1e;
+  border-radius: 8px;
+}
 
-    .card h3 {
-      margin: 10px 0 5px;
-      color: #4FC3F7;
-    }
+.card h3 {
+  margin: 10px 0 5px;
+  color: #4FC3F7;
+}
 
-    .price {
-      font-size: 18px;
-      font-weight: bold;
-      color: #06060b;
-    }
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #06060b;
+}
 
-    .card button {
-      background-color: #007acc;
-      border: none;
-      padding: 10px 15px;
-      margin-top: 10px;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.card button {
+  background-color: #007acc;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
 
-    #cart {
-      position: fixed;
-      top: 0;
-      right: -400px;
-      width: 300px;
-      height: 100%;
-      background-color: #30303b;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.7);
-      padding: 20px;
-      transition: right 0.3s ease;
-      overflow-y: auto;
-    }
+/* ===== Carrinho lateral ===== */
+#cart {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 300px;
+  height: 100%;
+  background-color: #30303b;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.7);
+  padding: 20px;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+#cart.active {
+  right: 0;
+}
+#cart.animate-cart {
+  animation: slideInRight 0.4s ease forwards;
+}
+#cart h2 {
+  color: #4FC3F7;
+  margin-top: 0;
+}
 
-    #cart.active {
-      right: 0;
-    }
+/* ===== Itens do carrinho ===== */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1f1f2e;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: transform 0.2s, background 0.3s;
+}
+.cart-item:hover {
+  transform: scale(1.03);
+  background: #2a2a3d;
+}
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-right: 12px;
+  border-radius: 8px;
+  border: 2px solid #4FC3F7;
+  background: #111;
+}
+.cart-item span {
+  flex: 1;
+  font-weight: bold;
+  color: #fff;
+  font-size: 14px;
+}
+.cart-item .remove-btn {
+  background: #ff4444;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.cart-item .remove-btn:hover {
+  background: #cc0000;
+}
+.cart-item.animate-item {
+  animation: fadeInUp 0.4s ease;
+}
 
-    #cart h2 {
-      color: #4FC3F7;
-      margin-top: 0;
-    }
+/* ===== Botões carrinho ===== */
+.close-cart,
+.checkout {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.close-cart {
+  background-color: red;
+  color: white;
+}
+.checkout {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+.checkout:hover {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 114, 255, 0.7);
+}
 
-    .cart-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #2d2d30;
-      margin-bottom: 10px;
-      padding: 10px;
-      border-radius: 5px;
-    }
+/* ===== Notificação ===== */
+#notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: none;
+  z-index: 9999;
+}
+#notification.animate {
+  animation: slideDown 0.4s ease;
+}
 
-    .cart-item img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      margin-right: 10px;
-    }
+/* ===== Animações ===== */
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes slideInRight {
+  from {right: -400px; opacity: 0;}
+  to {right: 0; opacity: 1;}
+}
+@keyframes slideDown {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
 
-    .cart-item span {
-      flex: 1;
-    }
-
-    .close-cart, .checkout {
-      background-color: #007acc;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      width: 100%;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .close-cart {
-      background-color: red;
-    }
-
-    /* Notificação */
-    #notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #4caf50;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      display: none;
-      z-index: 9999;
-    }
   </style>
 </head>
 <body>
@@ -164,29 +243,29 @@
     <div class="card">
       <img src="tablet.png" alt="Tablet">
       <h3>Tablet</h3>
-      <p class="price">R$ 1.999.00</p>
-      <button onclick="addToCart('Tablet','tablet.png',1.999)">Adicionar</button>
+      <p class="price">R$ 1.999</p>
+      <button onclick="addToCart('Tablet','tablet.png',1999)">Adicionar</button>
     </div>
 
     <div class="card">
       <img src="MOUSE GAMERS.jpg" alt="MOUSE GAMER">
       <h3>Mouse Gamer</h3>
-      <p class="price">R$ 199,00</p>
-      <button onclick="addToCart('Mouse Gamer','MOUSE GAMERS.jpg',199.00)">Adicionar</button>
+      <p class="price">R$ 199.00</p>
+      <button onclick="addToCart('Mouse Gamer','MOUSE GAMERS.jpg',199)">Adicionar</button>
     </div>
 
     <div class="card">
       <img src="combo.png" alt="Logo CiberFox">
       <h3>Combo</h3>
-      <p class="price">R$ 1.799.00</p>
-      <button onclick="addToCart('Combo','combo.png',1.799)">Adicionar</button>
+      <p class="price">R$ 1.799</p>
+      <button onclick="addToCart('Combo','combo.png',1799)">Adicionar</button>
     </div>
 
     <div class="card">
       <img src="celular.png" alt="Celular Gamer">
       <h3>Celular Gamer</h3>
-      <p class="price">R$ 1.299.00</p>
-      <button onclick="addToCart('Celular Gamer','celular.png',1.299')">Adicionar</button>
+      <p class="price">R$ 1.299</p>
+      <button onclick="addToCart('Celular Gamer','celular.png',1299)">Adicionar</button>
     </div>
   </div>
 
@@ -200,42 +279,79 @@
 
   <!-- Notificação -->
   <div id="notification"></div>
-
-  <script>
-    function toggleCart() {
-      document.getElementById('cart').classList.toggle('active');
+<script>
+  function toggleCart() {
+    const cart = document.getElementById('cart');
+    cart.classList.toggle('active');
+    
+    if (cart.classList.contains('active')) {
+      cart.classList.add('animate-cart');
+      setTimeout(() => cart.classList.remove('animate-cart'), 400);
     }
+  }
 
-    function showNotification(msg) {
-      const notif = document.getElementById('notification');
-      notif.textContent = msg;
-      notif.style.display = "block";
-      setTimeout(() => {
-        notif.style.display = "none";
-      }, 2000);
+  function showNotification(msg) {
+    const notif = document.getElementById('notification');
+    notif.textContent = msg;
+    notif.style.display = "block";
+    notif.classList.remove("animate"); // reseta
+    void notif.offsetWidth;            // força reflow
+    notif.classList.add("animate");    // reaplica
+    setTimeout(() => {
+      notif.style.display = "none";
+    }, 2000);
+  }
+
+  function addToCart(name, image, price) {
+    const cartItems = document.getElementById('cart-items');
+
+    const item = document.createElement('div');
+    item.classList.add('cart-item', 'animate-item'); // adiciona classe animada
+    item.setAttribute("data-price", price);
+
+    item.innerHTML = `
+      <img src="${image}" alt="${name}">
+      <span>${name} <br> <small style="color:#4FC3F7;">R$ ${price.toFixed(2)}</small></span>
+      <button class="remove-btn" onclick="this.parentElement.remove(); updateTotal()">✖</button>
+    `;
+
+    cartItems.appendChild(item);
+
+    updateTotal();
+    showNotification(`${name} adicionado ao carrinho!`);
+
+    // remove classe depois da animação
+    setTimeout(() => item.classList.remove("animate-item"), 500);
+  }
+
+  function updateTotal() {
+    const items = document.querySelectorAll("#cart-items .cart-item");
+    let total = 0;
+
+    items.forEach(el => {
+      total += parseFloat(el.getAttribute("data-price"));
+    });
+
+    let totalDiv = document.getElementById("cart-total");
+    if (!totalDiv) {
+      totalDiv = document.createElement("div");
+      totalDiv.id = "cart-total";
+      totalDiv.style.marginTop = "15px";
+      totalDiv.style.fontWeight = "bold";
+      totalDiv.style.color = "#4FC3F7";
+      document.getElementById("cart").appendChild(totalDiv);
     }
+    totalDiv.innerHTML = `💰 Total: R$ ${total.toFixed(2)}`;
+  }
 
-    function addToCart(name, image, price) {
-      const cartItems = document.getElementById('cart-items');
+  function checkout() {
+    alert("Compra concluída com sucesso!");
+    document.getElementById('cart-items').innerHTML = "";
+    updateTotal();
+    toggleCart();
+  }
+</script>
 
-      const item = document.createElement('div');
-      item.classList.add('cart-item');
-      item.innerHTML = `
-        <img src="${image}" alt="${name}">
-        <span>${name} - R$ ${price.toFixed(2)}</span>
-        <button onclick="this.parentElement.remove()">❌</button>
-      `;
 
-      cartItems.appendChild(item);
-
-      showNotification(`${name} adicionado ao carrinho!`);
-    }
-
-    function checkout() {
-      alert("Compra concluída com sucesso!");
-      document.getElementById('cart-items').innerHTML = "";
-      toggleCart();
-    }
-  </script>
 </body>
 </html>
