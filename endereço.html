@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Endereço de Entrega - CyberFox</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1d78cc, #0a4a91);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Container animado */
+    .form-container {
+      background: #252526;
+      padding: 30px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    h2 {
+      color: #4FC3F7;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #4FC3F7;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideIn 0.6s ease forwards;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      background: #333;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+      box-shadow: 0 0 10px #00c6ff;
+      transform: scale(1.02);
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: pulse 2s infinite;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,114,255,0.9);
+    }
+
+    /* Animações */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 5px #00c6ff; }
+      50% { text-shadow: 0 0 20px #00c6ff; }
+      100% { text-shadow: 0 0 5px #00c6ff; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Endereço de Entrega</h2>
+    <form onsubmit="finalizarCompra(event)">
+      <label for="nome">Nome Completo</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="cep">CEP</label>
+      <input type="text" id="cep" name="cep" required pattern="[0-9]{5}-?[0-9]{3}" placeholder="00000-000" onblur="buscarCep(this.value)">
+
+      <label for="rua">Rua</label>
+      <input type="text" id="rua" name="rua" required>
+
+      <label for="numero">Número</label>
+      <input type="text" id="numero" name="numero" required>
+
+      <label for="bairro">Bairro</label>
+      <input type="text" id="bairro" name="bairro" required>
+
+      <label for="cidade">Cidade</label>
+      <input type="text" id="cidade" name="cidade" required>
+
+      <label for="estado">Estado</label>
+      <input type="text" id="estado" name="estado" required>
+
+      <button type="submit">Finalizar Pedido</button>
+    </form>
+  </div>
+
+  <script>
+    function finalizarCompra(event) {
+      event.preventDefault();
+      alert("Pedido finalizado com sucesso! Obrigado por comprar na CyberFox 🚀");
+      window.location.href = "index.html"; // redireciona de volta à loja
+    }
+
+    function buscarCep(cep) {
+      cep = cep.replace(/\D/g, ''); // remove caracteres não numéricos
+      if (cep.length !== 8) {
+        alert("CEP inválido!");
+        return;
+      }
+
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.erro) {
+            alert("CEP não encontrado!");
+            return;
+          }
+          document.getElementById('rua').value = data.logradouro;
+          document.getElementById('bairro').value = data.bairro;
+          document.getElementById('cidade').value = data.localidade;
+          document.getElementById('estado').value = data.uf;
+        })
+        .catch(() => alert("Erro ao buscar CEP!"));
+    }
+  </script>
+
+</body>
+</html>
